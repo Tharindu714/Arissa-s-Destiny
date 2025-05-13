@@ -183,10 +183,21 @@ Each scene includes a **LessonPopup.prefab** to guide the player, instantiated b
 
 ---
 ## 🛠️ Screenshots of the making of game
+
+**Unity Game Designing Screenshot**
 ![image](https://github.com/user-attachments/assets/e50676a9-b938-4913-a6f7-26f80ee9c1fe)
+
+**Gameplay Simulation View**
 ![image](https://github.com/user-attachments/assets/eb5a0521-d67c-4d89-bace-08ac7b01e63b)
+
+**Player Idel Pose Gameplay**
 ![image](https://github.com/user-attachments/assets/8cb3464b-6102-473a-8d9d-8b72336b9ed9)
+
+**Player Fast Run Pose Gameplay**
 ![image](https://github.com/user-attachments/assets/b49ce4ba-4dd3-4982-a5bc-ca9ec1d01c15)
+
+**Enemy Design and Animation**
+![image](https://github.com/user-attachments/assets/8f235239-a62c-47af-8d8c-896ce35a081d)
 
 ---
 ## 🤝 Contributing
