@@ -1,0 +1,3 @@
+repository "Arissa-s Destiny/Arissa-Destiny@18968273332680@cloud"
+  path "/"
+    smartbranch "/main/Unity-3rd-person-game"
