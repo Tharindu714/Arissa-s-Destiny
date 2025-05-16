@@ -7,39 +7,42 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float walkspeed = 2f;
     public Animator animator;
-    public GameObject GameOverText;
+    public GameObject lost;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-       // Time.timeScale = 5;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("Run", false);
-        animator.SetBool("idel", true);
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.position += new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed;
-            animator.SetBool("Run", true);
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
         transform.position += new Vector3(-1, 0, 0) * Time.deltaTime * walkspeed;
             animator.SetTrigger("Left");
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.position += new Vector3(1, 0, 0) * Time.deltaTime * walkspeed;
             animator.SetTrigger("Right");
 
         }
+
         if (Input.GetKey(KeyCode.Space))
         {
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime * moveSpeed;
@@ -47,7 +50,6 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided With " + collision.gameObject.name);
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 Time.timeScale = 0;
-                GameOverText.gameObject.SetActive(true);
+                lost.gameObject.SetActive(true);
             }
         }
     }

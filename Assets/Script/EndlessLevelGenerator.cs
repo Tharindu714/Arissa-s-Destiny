@@ -12,6 +12,7 @@ public class EndlessLevelGenerator : MonoBehaviour
 
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles = new List<GameObject>();
+    private float safeZone = 110f;  //Distance Before deleting a tile
 
     public void Start()
     {
@@ -19,7 +20,7 @@ public class EndlessLevelGenerator : MonoBehaviour
         
 
         for (int i= 0; i< tilesOnScreen; i++){
-            if(i<2)
+            if(i<1)
             {
                 SpawanTile(0);
             }
@@ -30,6 +31,15 @@ public class EndlessLevelGenerator : MonoBehaviour
                 
         }
 
+    }
+
+    private void Update()
+    {
+        if(player.position.z - safeZone > (spawnZ - tilesOnScreen * tileLength))
+        {
+            SpawanTile();
+            DeleteTile();
+        }
     }
 
     void SpawanTile(int prefabIndex =-1)
@@ -51,11 +61,17 @@ public class EndlessLevelGenerator : MonoBehaviour
         int randomIndex;
         do
         {
-            randomIndex = Random.Range(1, tilePrefabs.Length);
+            randomIndex = Random.Range(2, tilePrefabs.Length);
         }
         while (randomIndex == lastPrefabIndex);
         lastPrefabIndex = randomIndex;
         return randomIndex;
+    }
+
+    void DeleteTile()
+    {
+        Destroy(activeTiles[0]);
+        activeTiles.RemoveAt(0);
     }
 }
 
