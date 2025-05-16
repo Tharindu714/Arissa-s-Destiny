@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float walkspeed = 2f;
     public Animator animator;
     public GameObject GameOverText;
 
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         animator.SetBool("Run", false);
+        animator.SetBool("idel", true);
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -29,14 +30,15 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-        transform.position += new Vector3(-1, 0, 0) * Time.deltaTime * moveSpeed;
-            
+        transform.position += new Vector3(-1, 0, 0) * Time.deltaTime * walkspeed;
+            animator.SetTrigger("Left");
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(1, 0, 0) * Time.deltaTime * moveSpeed;
-            
+            transform.position += new Vector3(1, 0, 0) * Time.deltaTime * walkspeed;
+            animator.SetTrigger("Right");
+
         }
         if (Input.GetKey(KeyCode.Space))
         {
