@@ -199,6 +199,10 @@ Each scene includes a **LessonPopup.prefab** to guide the player, instantiated b
 **Enemy Design and Animation**
 ![image](https://github.com/user-attachments/assets/8f235239-a62c-47af-8d8c-896ce35a081d)
 
+**New Features**
+![New1](https://github.com/user-attachments/assets/485f1fc6-c032-474f-99e6-c59d079e448a)
+![New2](https://github.com/user-attachments/assets/bc743808-dc45-4df9-bb6b-4c7373c2ebde)
+
 ---
 ## 🤝 Contributing
 
