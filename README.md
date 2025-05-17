@@ -13,6 +13,16 @@ Arissa’s Destiny is a tutorial-focused Unity project designed to guide develop
 3. **Game Flow Management**: Using `GameManager` and `LessonManager` scripts to orchestrate lesson sequences, UI prompts, and player guidance.
 4. **UI & Input Handling**: Crafting intuitive menus, HUD elements, and touch/keyboard controls.
 
+* **New Features (v2.0):**
+
+  * **Enemy AI & Combat:** Basic enemy patrols and attack logic.
+  * **Health System:** Player and enemy health bars with damage feedback.
+  * **Collectibles & Scoring:** In‑scene pickups that update score UI.
+  * **Audio Integration:** Background music and SFX for actions.
+
+- **First Person Controller with Torchlight 🔦**  
+  Players can now explore environments in first-person mode, equipped with a toggleable torchlight — great for low-light scenes and improving immersion during exploration.
+
 > **Target Audience:** Unity beginners and intermediate developers seeking hands-on examples of animations, scripting patterns, and lesson-driven gameplay.
 
 ---
@@ -26,22 +36,38 @@ Arissa-s-Destiny/
 │   │   ├── MainMenu.unity      # Entry point with navigation UI
 │   │   ├── Lesson1.unity       # Lesson: Scene setup & camera control
 │   │   ├── Lesson2.unity       # Lesson: Character movement & animation
+│   │   ├── Menu.unity          # Open Menu to start game
 │   │   └── BattleScene.unity   # Demo combat with attack animations
 │   ├── Scripts/                # C# scripts for game logic
 │   │   ├── GameManager.cs      # Singleton managing global game state
 │   │   ├── LessonManager.cs    # Controls lesson flow and triggers
 │   │   ├── PlayerController.cs # Movement, input, and physics
 │   │   ├── UIController.cs     # Handles menu/navigation and HUD
+│   │   ├── EnemyHealthTracking.cs           # New: Health bar logic
+│   │   ├── Collectible.cs            # New: Pickup behavior
+│   │   ├── AudioManager.cs           # New: SFX & music manager
 │   │   └── AnimationHandler.cs # Maps input to Animator states
 │   ├── Animations/             # AnimationClips and AnimatorControllers
 │   │   ├── Arissa_Idle.anim
+│   │   ├── Arissa_Catwalk.anim
+│   │   ├── ParasiteL_Crawling.anim
 │   │   ├── Arissa_Run.anim
 │   │   ├── Arissa_Attack.anim
+│   │   ├── Arissa_Left_Straf_walk.anim
+│   │   ├── Arissa_Right_Straf_walk.anim
+│   │   ├── Arissa_jump.anim
 │   │   └── Arissa_Controller.controller
 │   ├── Prefabs/                # Reusable GameObjects
 │   │   ├── Player.prefab
 │   │   ├── UI_Canvas.prefab
+│   │   ├── Enemy.prefab              # New: Enemy prefab with AI
+│   │   ├── Collectible.prefab        # New: Star or coin pickup
 │   │   └── LessonPopup.prefab
+│   ├── Levels/                # Reusable GameLevels
+│   │   ├── Normal-Level.prefab
+│   │   ├── Wild-Level.prefab
+│   │   ├── Remote-Level.prefab
+│   │   └── Alien-World.prefab
 │   ├── UI/                      # UI assets (images, fonts)
 │   └── Audio/                   # Background music & SFX
 ├── ProjectSettings/             # Unity-generated project settings
@@ -60,7 +86,7 @@ Arissa-s-Destiny/
 **Open Project**:
 
 ```bash
-git clone https://github.com/Tharindu714/Arissa-s-Destiny.git
+git clone https://github.com/Tharindu714/Unity-powered-educational-game-Project.git
 # In Unity Hub: "Add" this folder → Open.
 ```
 
@@ -141,6 +167,19 @@ public void Attack() {
 public void OnStartClicked() => GameManager.Instance.StartGame();
 public void OnQuitClicked() => Application.Quit();
 ```
+
+### **New** `HealthSystem.cs`
+
+* **Tracks** current/max health.
+* **Updates** UI health bar via `UIController`.
+
+### **New** `Collectible.cs`
+
+* **Pickup Logic**: On trigger, increments score and destroys itself.
+
+### **New** `AudioManager.cs`
+
+* **Plays** background music and SFX for actions (jump, attack, collect).
 
 ---
 
